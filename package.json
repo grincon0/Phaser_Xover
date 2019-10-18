@@ -4,6 +4,9 @@
   "description": "Phaser 3 fast-paced fighting game",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently \" nodemon index.js \" \" cd client && npm start\"",
+    "install": "cd client && npm install",
+    "build": "concurrently \" cd client && npm run build\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
