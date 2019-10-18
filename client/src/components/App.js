@@ -1,29 +1,55 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, {useState, useReducer, useCallback, useEffect} from 'react';
 import Phaser from 'phaser';
+import TitleScene from '../scenes/Title.js';
 
 const config = {
     type: Phaser.AUTO,
     parent: "phaser-example",
     width: 800,
     height: 600,
-    scene: {
-        preload: preload,
-        create: create
-    }
+    scene: [ new TitleScene()]
 };
 
 const game = new Phaser.Game(config);
 
-function preload() {
-    console.log('pre-loading')
+/* const preload = () => {
+    console.log('pre-loading');
     //game.scene.add.
 }
-function create() {
-    console.log('creating')
-
+const create = () => {
+    console.log('creating');
+    switchScene();
 }
 
+const switchScene = () => {
+    console.log('init switching');
+    setTimeout(()=> {
+        config.scene = [TitleScene]
+    }, 1000);
+} */
+
+const gameReducer = (currentState, action) => {
+    switch (action.type) {
+        case 'ADD_SCENE':
+            
+           return{
+               ...currentState,
+               scene: []
+           }
+    
+        default:
+            break;
+    }
+
+
+}
 const App = () => {
+    const [gameState, dispatchState] = useReducer(gameReducer, config);
+
+    useEffect(()=>{
+     
+    }, [])
+
 
         return(
         <div>
